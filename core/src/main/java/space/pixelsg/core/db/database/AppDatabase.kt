@@ -1,5 +1,6 @@
 package space.pixelsg.core.db.database
 
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import space.pixelsg.core.db.dao.EpisodeDao
@@ -10,13 +11,13 @@ import space.pixelsg.core.db.entities.PageMapping
 import space.pixelsg.core.db.entities.TitleRoomEntity
 
 @Database(
-    version = 1,
+    version = 3,
     exportSchema = true,
     entities = [
         TitleRoomEntity::class,
         EpisodeRoomEntity::class,
         PageMapping::class
-    ]
+    ],
 )
 
 abstract class AppDatabase : RoomDatabase() {

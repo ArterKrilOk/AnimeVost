@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c750ef323ae9ac4d79c9c956eb38a5a5",
+    "identityHash": "ac266d69ea45012b28eed01991b8f2f0",
     "entities": [
       {
         "tableName": "titles",
@@ -166,7 +166,7 @@
       },
       {
         "tableName": "page_mapping",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `params` TEXT NOT NULL, `page` INTEGER NOT NULL, `results` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `params` TEXT NOT NULL, `page` INTEGER NOT NULL, `results` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -191,6 +191,12 @@
             "columnName": "results",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -206,7 +212,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c750ef323ae9ac4d79c9c956eb38a5a5')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ac266d69ea45012b28eed01991b8f2f0')"
     ]
   }
 }

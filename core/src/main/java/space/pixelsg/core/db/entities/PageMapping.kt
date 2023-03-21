@@ -13,7 +13,11 @@ data class PageMapping(
     @ColumnInfo
     val page: Int,
     @ColumnInfo
-    val results: String
+    val results: String,
+    @ColumnInfo
+    val createDate: Long = System.currentTimeMillis()
 ) {
     fun ids() = results.split(",").map { it.toLong() }
+
+    fun isTooOld(): Boolean = System.currentTimeMillis() - createDate > 180000
 }

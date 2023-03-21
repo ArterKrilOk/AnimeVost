@@ -19,11 +19,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val query = MutableStateFlow("")
 
-    val items = query.flatMapConcat { query ->
+    val items = query.flatMapLatest { query ->
         Pager(PagingConfig(20, initialLoadSize = 20, enablePlaceholders = false)) {
             TitlePagingSource(titleProvider, query)
-        }.flow.cachedIn(viewModelScope)
-    }.map { pagingData ->
+        }.flow
+    }.cachedIn(viewModelScope).map { pagingData ->
         pagingData.map { Item(it.id, it.simpleName, it.posterUrl) }
     }.shareIn(
         viewModelScope,

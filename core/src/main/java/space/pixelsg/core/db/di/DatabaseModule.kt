@@ -18,7 +18,7 @@ class DatabaseModule(private val context: Context) {
         context,
         AppDatabase::class.java,
         "app_database.db"
-    ).build()
+    ).fallbackToDestructiveMigration().build()
 
     @Provides
     @CoreScope

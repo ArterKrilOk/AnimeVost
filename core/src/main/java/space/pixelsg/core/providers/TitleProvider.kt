@@ -24,10 +24,10 @@ class TitleProvider @Inject constructor(
     private val pageMappingDao: PageMappingDao
 ) {
     suspend fun getLastTitles(request: TitleRequest) = withContext(Dispatchers.IO) {
-        //Load first from network and check updates
-        if (request.page == 1) getLastTitlesFromNetwork(request)
-        else pageMappingDao.getPageMapping(request.page, request.params).let { mapping ->
+        getLastTitlesFromNetwork(request)
+        pageMappingDao.getPageMapping(request.page, request.params).let { mapping ->
             if (mapping == null) getLastTitlesFromNetwork(request)
+            else if (mapping.isTooOld())  getLastTitlesFromNetwork(request)
             else titleDao.getTitlesByIds(mapping.ids()).map { it.toCoreTitle() }.let {
                 Paged(it.size, request.page, it)
             }

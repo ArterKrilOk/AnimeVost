@@ -22,14 +22,13 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.apply {
             adapter = itemAdapter
         }
-
         repeatOnCreated {
             viewModel.items.collectLatest {
                 itemAdapter.submitData(it)
             }
         }
         repeatOnCreated {
-            binding.searchEditText.onTextChanged().collect(viewModel.query)
+            binding.searchEditText.onTextChanged(400).collect(viewModel.query)
         }
     }
 }
