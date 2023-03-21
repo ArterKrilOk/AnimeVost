@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="8dp"
+    android:layout_marginStart="24dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="0dp"
+    android:stateListAnimator="@animator/focus_anim">
+
+    <space.pixelsg.animevosttv.ui.views.HeightPosterView
+        android:id="@+id/poster_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+</androidx.cardview.widget.CardView>
